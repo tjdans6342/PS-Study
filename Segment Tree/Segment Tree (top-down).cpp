@@ -18,8 +18,7 @@ struct Seg {
 	}
 
 	void update(int idx, ll x) {
-		idx += sz;
-		tree[idx] = x;
+		tree[idx += sz] = x;
 		while (idx /= 2) tree[idx] = tree[2*idx] + tree[2*idx+1];
 	}
 
