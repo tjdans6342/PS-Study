@@ -30,7 +30,7 @@ struct Seg {
 		int mid = (nl + nr) / 2;
 		update(l, r, x, 2*n, nl, mid);
 		update(l, r, x, 2*n+1, mid+1, nr);
-		tree[n] = tree[2*n] + tree[2*n+1]; // update high-position node
+		tree[n] = tree[2*n] + tree[2*n+1]; // update current(high-position) node
 	}
 
 	ll query(int l, int r, int n=1, int nl=0, int nr=sz-1) {
