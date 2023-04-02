@@ -45,7 +45,7 @@ struct Seg {
 
 	void propagate(int n, int nl, int nr) {
 		if (lazy[n] != 0) {
-			if (n < sz) { // (if not leaf node) propagte child node
+			if (n < sz) { // (if not leaf node) propagate child node
 				lazy[2*n] += lazy[n];
 				lazy[2*n+1] += lazy[n];
 			}
