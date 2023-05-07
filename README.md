@@ -47,8 +47,9 @@ this repository is for me to record my PS studies.
 	- 방문: `visited`, `visit`
 	- 사용중임을 나타낼 때: `used`
 
-- (1개 이상의) 쌍
-	- 1개: `x`
+
+- (1개 이상의) 쌍 (주로 전역변수로 쓸 때) (재사용 많이 하는 경우)
+	- 1개: `x`, `u`
 	- 2개: `a b`
 		- 좌표: `x y`
 		- 몫/나머지: `p q`
@@ -59,9 +60,11 @@ this repository is for me to record my PS studies.
 	- 4개: `a b c d`
 		- 상하좌우: `up(u) down(d) left(l) right(r)`
 	- 반복문(for)문 변수명: `i j k l ...`
+	
 - 결과를 나타낼 때: `res`, `ans`
 	- 함수의 리턴값: `ret`  
 
+- 인덱스: `index`, `idx`, `i`
 
 - 최대/최소값: `max(mx) min(mn)`
 - 하나의 지점: `x`, `node`, `element`
@@ -72,10 +75,12 @@ this repository is for me to record my PS studies.
 - 최적의 값: `best`
 - 숫자: `num`, `n`
 - 개수: `count`, `cnt`, `num`
-- 크기: `amount`, `size`, `sz`
-- 길이: `length`, `len`
-- 합, 총량: `sum`, `total`, `all`
-
+- 크기: `amount`, `size`, `sz`  
+- 길이: `length`, `len`  
+- 합, 총량: `sum`, `total`, `all`  
+- 부분: `part`  
+- 차이: `diff`
+- 시간, 시각: `time`, `t`
 
 <br>
 
@@ -91,5 +96,15 @@ this repository is for me to record my PS studies.
 - 탐색에 관한 이름: `search`
 	- 깊이우선탐색: `dfs`
 	- 너비우선탐색: `bfs`
-- 합치다: `merge`, `combine`
+- 합치다: `merge`, `unite`, `combine`
 - 바꾸다, 변환하다: `change`, `convert`, `a_to_b`, `a2b`
+- 갱신하다: `update`
+
+
+#### Commonly used Names(Convention)
+- `sy`/`sx`: 시작(start) x, y 좌표를 의미  
+- `ey`/`ex`: 끝(end) x, y 좌표를 의미  
+- `dp`: 다이나믹프로그래밍(Dynamic Programming) 알고리즘을 사용하는 배열을 의미  
+- `psum`: 여기서 `p`는 누적(prefix)를 의미  
+- `t`, `T`: 테스트 케이스의 개수나 시간을 의미  
+- `q`, `Q`: 쿼리의 개수를 의미
