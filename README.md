@@ -54,6 +54,8 @@ this repository is for me to record my PS studies.
 		- 좌표: `x y`
 		- 몫/나머지: `p q`
 		- 세로/가로: `n m`, `row col`, `r c`
+		- 앞/뒤: `front rear`, `l r`
+		- 전/후: `before after`, `l r`
 	- 3개: `a b c`
 		- 좌표: `x y z`
 		- 그래프 간선: `a b w`
