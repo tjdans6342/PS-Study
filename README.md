@@ -46,7 +46,8 @@ this repository is for me to record my PS studies.
 	- 방문: `visited`, `visit`
 	- 사용중임을 나타낼 때: `used`
 
-- 여러 쌍
+- (1개 이상의) 쌍
+	- 1개: `x`
 	- 2개: `a b`
 		- 좌표: `x y`
 		- 몫/나머지: `p q`
