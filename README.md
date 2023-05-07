@@ -108,3 +108,7 @@ this repository is for me to record my PS studies.
 - `psum`: 여기서 `p`는 누적(prefix)를 의미  
 - `t`, `T`: 테스트 케이스의 개수나 시간을 의미  
 - `q`, `Q`: 쿼리의 개수를 의미
+- `MOD`: 문제의 정답이 커서 나눠야 하는 수를 의미
+- `MAX`/`MIN`: 문제에서 나올 수 있는(또는 제시한) 최대/최소 값을 의미
+- `INF`: 코드에서 등장할 수 있는 최대값(즉, 무한대)을 의미 (`-INF`로 -무한대 표현)
+- `ll`: `long long`을 줄여서 사용
