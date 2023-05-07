@@ -52,11 +52,13 @@ this repository is for me to record my PS studies.
 	- 2개: `a b`
 		- 좌표: `x y`
 		- 몫/나머지: `p q`
+		- 세로/가로: `n m`, `row col`, `r c`
 	- 3개: `a b c`
 		- 좌표: `x y z`
 		- 그래프 간선: `a b w`
 	- 4개: `a b c d`
 		- 상하좌우: `up(u) down(d) left(l) right(r)`
+	- 반복문(for)문 변수명: `i j k l ...`
 - 결과를 나타낼 때: `res`, `ans`
 	- 함수의 리턴값: `ret`  
 
