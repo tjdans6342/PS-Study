@@ -29,6 +29,7 @@ this repository is for me to record my PS studies.
 	- 정보를 나타낼 때: `info`
 	- 배열 원소명에 `s`붙이기: ( ex) `nodes` )
 	- 간단하거나 그 의미가 명확하면 자료형 앞 글자 따거나 줄이기
+		- 벡터(vector): `v`, `vt`
 		- 리스트(list): `l`, `lst`
 		- 셋(set): `s`, `st`
 		- 튜플(tuple): `t`, `tp`
