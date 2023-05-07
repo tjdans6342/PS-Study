@@ -3,112 +3,67 @@ using namespace std;
 using ll = long long;
 
 int sz;
-vector<pair<int, int>> tree;
+struct Seg {
+	vector<array<ll, 2>> tree;
 
-void update(int idx, int x, int i) {
-	idx += sz;
-	tree[idx] = {x, i};
-	while (idx /= 2) {
-		if (tree[2*idx].first > tree[2*idx+1].first) tree[idx] = tree[2*idx];
-		else tree[idx] = tree[2*idx+1];
-	}
-}
-
-pair<int, int> query(int a, int b) {
-	a += sz; b += sz;
-	pair<int ,int> ret = {0, -1};
-
-	while (a <= b) {
-		if (a%2 == 1) {
-			if (ret.first < tree[a].first) ret = tree[a];
-			a++;
-		}
-		if (b%2 == 0) {
-			if (ret.first < tree[b].first) ret = tree[b];
-			b--;
-		}
-		a /= 2; b /= 2;
+	array<ll, 2> merge(array<ll, 2> &l, array<ll, 2> &r) {
+		return {l[0]+r[0], l[1]+r[1]};
 	}
 
-	return ret;
-}
+	void build(int n) {
+		for (sz=1; sz<n; sz*=2);
+		tree.assign(2*sz, {0, 0});
+
+		for (int i=sz-1; i>=1; i--) tree[i] = merge(tree[2*i], tree[2*i+1]);
+	}
+
+	void update(int idx, array<ll, 2> x) {
+		tree[idx += sz] = x;
+		while (idx /= 2) tree[idx] = merge(tree[2*idx], tree[2*idx+1]);
+	}
+
+	array<ll, 2> query(int l, int r, int n=1, int nl=0, int nr=sz-1) {
+		if (nr<l || r<nl) return {0, 0};
+		if (l<=nl && nr<=r) return tree[n];
+		
+		int mid = (nl + nr) / 2;
+		auto left = query(l, r, 2*n, nl, mid);
+		auto right = query(l, r, 2*n+1, mid+1, nr);
+
+		return merge(left, right);
+	}
+} seg;
 
 int main()
 {	
 	ios_base::sync_with_stdio(false); cin.tie(NULL);
 
-	sz = (1 << ((int)ceil(log2((int)(1e5+10)))));
-	tree.assign(2*sz, {0, 0});
+	int N; cin >> N;
 
-	int n; cin >> n;
-	vector<int> v(n);
-	for (int i=0; i<n; i++) {
+	vector<int> v(N);
+	for (int i=0; i<N; i++) {
 		int x; cin >> x; 
 		v[x] = i;
 	}
-	vector<int> arr(n);
-	for (int i=0; i<n; i++) {
+	vector<int> arr(N);
+	for (int i=0; i<N; i++) {
 		int x; cin >> x;
 		arr[v[x]] = i;
 	}
 
-	vector<int> dp(n, 0);
-	vector<int> path(n, 0);
+	seg.build(N+1);
 
-	for (int i=0; i<n; i++) {
-		int x = arr[i];
-		int best, idx;
-		tie(best, idx) = query(0, x-1);
-
-		path[i] = idx;
-		dp[i] = best+1;
-		update(x, dp[i], i);
-	}
-
+	ll ans = 0;
 	for (auto &u : arr) {
-		cout << u << ' ';
-	}
-	cout << '\n';
-
-	for (int i=0; i<n; i++) {
-		cout << path[i] << ' ' << dp[i] << "    ";
-	}
-	cout << '\n';
-
-	ll res = 0;
-	vector<bool> processed(n, false);
-	for (int i=n-1; i>=0; i--) {
-		int cur = i;
-
-		ll total = dp[i], num = 0;
-
-		while (cur >= 0) {
-			if (processed[cur]) break;
-			processed[cur] = true;
-			num++;
-			cur = path[cur];
-		}
-
-		ll p = num;
-		ll q = total - num;
-
-		ll val = max(total*(total-1)*(total-2)/6, 0LL);
-		val -= max(q*(q-1)*(q-2)/6, 0LL);
-
-		res += val;
-		// if (p >= 3) res += p*(p-1)*(p-2)/6; // mistake point
-		// if (p >= 2 && q != 0) res += p*(p-1)/2 * q;
-		// if (p >= 1 && q != 0) res += p * max(q*(q-1)/2, 0LL);
-
-		// cout << i << ' ' << total << ' ' << num << '\n';
+		auto ret = seg.query(0, u-1);
+		ans += ret[1];
+		seg.update(u, {1, ret[0]});
 	}
 
-	if (res == 0) {
-		cout << "Attention is what I want" << '\n';
-	}
+	if (ans == 0) cout << "Attention is what I want" << '\n';
 	else {
 		cout << "My heart has gone to paradise" << '\n';
-		cout << res <<'\n';
+		cout << ans << '\n';
 	}
 
 	return 0;
