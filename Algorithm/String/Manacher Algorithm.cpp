@@ -33,11 +33,10 @@ vector<node> manacher(string s) {
         else r = 0;
 
         while ( (c-r >= 0 && c+r <= 2*n) && (s[c-r] == s[c+r]) ) r++;
-        r--; p = c+r;
+        r--;
 
-        if (p > dp_p) {
-            tie(dp_p, dp_c) = make_pair(p, c);
-        }   
+        if (c+r > dp_p) tie(dp_p, dp_c) = make_pair(c+r, c);        
+        tie(p, c) = make_pair(dp_p, dp_c);
     }
 
     return ret;
