@@ -83,6 +83,7 @@ this repository is for me to record my PS studies.
 - 부분: `part`  
 - 차이: `diff`
 - 시간, 시각: `time`, `t`
+- 이전: `prev`
 
 <br>
 
