@@ -8,18 +8,22 @@ using ll = long long;
 int sz;
 struct Seg {
 	vector<ll> tree;
-
+	
+	ll merge(ll left, ll right) {
+		return left + right;
+	}
+	
 	void build(int n) {
 		for (sz=1; sz<n; sz*=2); // sz >= n
 		tree.assign(2*sz, 0);
 
 		for (int i=sz; i<sz+n; i++) cin >> tree[i];
-		for (int i=sz-1; i>=1; i--) tree[i] = tree[2*i] + tree[2*i+1];
+		for (int i=sz-1; i>=1; i--) tree[i] = merge(tree[2*i], tree[2*i+1]);
 	}
 
 	void update(int idx, ll x) {
 		tree[idx += sz] = x;
-		while (idx /= 2) tree[idx] = tree[2*idx] + tree[2*idx+1];
+		while (idx /= 2) tree[idx] = merge(tree[2*idx], tree[2*idx+1]);
 	}
 
 	ll query(int l, int r, int n=1, int nl=0, int nr=sz-1) {
@@ -27,7 +31,7 @@ struct Seg {
 		if (l<=nl && nr<=r) return tree[n];
 		
 		int mid = (nl + nr) / 2;
-		return query(l, r, 2*n, nl, mid) + query(l, r, 2*n+1, mid+1, nr);
+		return merge(query(l, r, 2*n, nl, mid), query(l, r, 2*n+1, mid+1, nr));
 	}
 } seg;
 
