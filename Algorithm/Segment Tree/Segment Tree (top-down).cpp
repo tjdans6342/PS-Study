@@ -10,7 +10,7 @@ struct Seg {
 	vector<ll> tree;
 
 	void build(int n) {
-		for (sz=1; sz<n; sz*=2);
+		for (sz=1; sz<n; sz*=2); // sz >= n
 		tree.assign(2*sz, 0);
 
 		for (int i=sz; i<sz+n; i++) cin >> tree[i];
